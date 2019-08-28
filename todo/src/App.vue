@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-    <div id="header">
-      <h2>My ToDo List</h2>
-      <input type="text" id="task" ref="task" placeholder="Title...">
-      <span v-on:click="newElement()" class="addBtn">Add</span>
+    <div id="head">
+      <h3 style="text-align:center;color:white">My ToDo List</h3>
+      <input type="text" id="data" ref="task" placeholder="    Enter the task">
+      <button v-on:click="newElement()" style="padding=:5px">Add</button><br><br>
     </div>
-   <p>Lets Rock</p>
-   <List v-bind:task="task"></List>
+   <List v-bind:tasksarr="tasksarr"></List>
   </div>
 </template>
 
@@ -20,16 +19,15 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      task:''
+      tasksarr:[]
     }
   },
   methods:{
     newElement : function(){
-      console.log("added");
-      var task[];
-      = this.$refs.task.value;
-      console.log(task[0]);
-      this.task=task[0];
+      var task1=this.$refs.task.value;
+      this.tasksarr.push(task1);
+      this.$refs.task.value='';
+    
     }
   }
 }
@@ -44,38 +42,29 @@ export default {
   color: #2c3e50;
   margin-top: 10px;
 }
-body {
-  position: relative;
-  margin: 0;
-  min-width: 150px;
-  width: 800px;
-  left: 300px
+body{
+  width: 703px;
 }
-#header {
+#head {
   background-color: darkcyan;
-  padding: 30px 40px;
+  padding: 5px;
   color: white;
   text-align: center;
-  padding-top: 10px
+  width:703px;
+  left:350px;
+  position: relative;
 
 }
-#task{
-  width: 650px;
+#data{
+  width: 500px;
+  position:relative;
 }
-.addBtn {
-  padding: 5px;
-  width: 5%;
-  background: #d9d9d9;
-  color: #555;
-  float: right;
-  text-align: center;
-  font-size: 16px;
+button{
   cursor: pointer;
-  transition: 0.3s;
-  border-radius: 0;
+  padding: 5px;
+  background-color: #eee;
+  border: 0px;
+  width: 80px
 }
 
-.addBtn:hover {
-  background-color: #bbb;
-}
 </style>
